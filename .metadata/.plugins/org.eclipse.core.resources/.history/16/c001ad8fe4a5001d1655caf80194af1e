@@ -1,0 +1,29 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.model.board.BoardDAO;
+import com.mvc3.mybatis.MybatisConfig;
+
+//3, 4단계 수행
+public class RegistController implements Controller{
+	MybatisConfig mybatisConfig=MybatisConfig.getInstance();
+	BoardDAO boardDAO=new BoardDAO();
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		SqlSession sqlSession=mybatisConfig.getSqlSession();
+		boardDAO.setSqlSession(sqlSession);  //주입
+		
+		//3단계) 일시키기
+		boardDAO.insert(board_idx);
+	}
+
+	public String getViewName() {
+		return "/board/view/regist";
+	}
+
+}

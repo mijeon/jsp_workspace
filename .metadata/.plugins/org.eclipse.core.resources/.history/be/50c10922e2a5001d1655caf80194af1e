@@ -1,0 +1,7 @@
+package com.mvc3.controller.board;
+
+import com.mvc3.controller.Controller;
+
+public class RegistController implements Controller{
+
+}

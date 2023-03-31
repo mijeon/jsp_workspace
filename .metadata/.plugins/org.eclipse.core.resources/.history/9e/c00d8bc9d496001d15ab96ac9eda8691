@@ -1,0 +1,5 @@
+package com.jspshop.mybatis;
+
+public class MyBatisConfig {
+
+}

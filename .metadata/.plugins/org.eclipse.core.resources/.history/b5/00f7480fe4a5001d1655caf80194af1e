@@ -1,0 +1,21 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.model.board.BoardDAO;
+
+//3, 4단계 수행
+public class RegistController implements Controller{
+	BoardDAO boardDAO;
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+
+	public String getViewName() {
+		return "/board/view/regist";
+	}
+
+}

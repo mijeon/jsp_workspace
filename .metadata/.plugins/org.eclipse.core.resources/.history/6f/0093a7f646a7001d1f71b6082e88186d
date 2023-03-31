@@ -1,0 +1,16 @@
+package gui.view;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class LoginForm extends JFrame {
+	JTextField t_id;
+	JTextField t_name;
+	JTextField t_email;
+	JButton bt_regist;
+	
+	public LoginForm() {
+		
+	}
+}

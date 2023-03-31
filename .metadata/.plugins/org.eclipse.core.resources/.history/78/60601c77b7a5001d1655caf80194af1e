@@ -1,0 +1,19 @@
+package com.mvc3.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.model.BloodAdvisor;
+
+//혈액형에 대한 요청을 처리하는 하위 컨트롤러
+//3단계 : 로직 객체에게 일 시키기
+//4단계 : 결과가 존재한다면 저장
+public class BloodController {
+	String TAG=this.getClass().getName();
+	BloodAdvisor advisor=new BloodAdvisor();
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("execute 호출");
+		//String blood=request.getParameter("blood");
+	}
+}

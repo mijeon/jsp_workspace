@@ -1,0 +1,16 @@
+package com.jspshop.repository;
+
+import com.jspshop.domain.Product;
+
+
+public class ProductDAO {
+	
+	//등록
+	public int insert(Product product) {
+		int result=0;
+
+		return result;
+	}
+	
+	
+}

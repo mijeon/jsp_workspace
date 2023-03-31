@@ -1,0 +1,8 @@
+package com.mvc3.controller.emp;
+
+import com.mvc3.model.emp.EmpService;
+
+//삭제 요청을 처리하는 하위 컨트롤러
+public class DeleteController {
+	EmpService empService=new EmpService();
+}

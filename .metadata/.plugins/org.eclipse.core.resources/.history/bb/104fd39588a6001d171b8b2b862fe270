@@ -1,0 +1,26 @@
+package com.mvc3.controller.emp;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+
+//사원 목록 요청을 처리하는 하위 컨트롤러
+public class ListController implements Controller{
+	
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("목록요청을 처리할 예정");
+	}
+
+	@Override
+	public String getViewName() {
+		return "/emp/list.do";
+	}
+
+	@Override
+	public boolean ifForWard() {
+		return false;
+	}
+
+}

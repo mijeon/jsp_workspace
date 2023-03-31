@@ -1,0 +1,7 @@
+package com.jspshop.domain;
+
+public class Color {
+	private int color_idx;
+	Product product;
+	private String color_name;
+}

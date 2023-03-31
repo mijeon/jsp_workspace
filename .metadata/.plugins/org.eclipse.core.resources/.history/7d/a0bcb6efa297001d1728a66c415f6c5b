@@ -1,0 +1,24 @@
+package com.jspshop.repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.jspshop.domain.Product;
+
+public class ProductDAO {
+	private SqlSession sqlSession;
+	
+	//일반 메서드  생성자에서 하는거랑 차이가 무어야
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	//등록
+	public int insert(Product product) {
+		int result=0;
+		result=sqlSession.insert("Product.insert", product);
+		
+		return result;
+	}
+	
+	
+}

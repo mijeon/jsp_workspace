@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dept">
+	<!-- 모든 목록 가져오기 -->
+	<select id="selectAll" resultType="Dept">
+		select * from dept
+	</select>
+	
+	<!-- 자식이 부모를 찾아가기 위한 쿼리문 -->
+	<select id="select" resultType="Dept" parameterType="int">
+		select * from dept where deptno=#{deptno}
+	</select>
+</mapper>

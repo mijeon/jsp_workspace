@@ -1,0 +1,45 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.domain.Board;
+import com.mvc3.model.board.BoardDAO;
+import com.mvc3.mybatis.MybatisConfig;
+
+//등록 요청을 처리하는 하위 컨트롤러
+//3, 4단계 수행
+public class RegistController implements Controller{
+	MybatisConfig mybatisConfig=MybatisConfig.getInstance();
+	BoardDAO boardDAO=new BoardDAO();
+	
+	//글쓰기
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		SqlSession sqlSession=mybatisConfig.getSqlSession();
+		boardDAO.setSqlSession(sqlSession);  //주입
+		
+		Board board=new Board();  //empty dto
+		board.setTitle(request.getParameter("title"));  //fill
+		board.setWriter(request.getParameter("writer"));  //fill
+		board.setContent(request.getParameter("content"));  //fill
+		
+		//3단계 : 글쓰기
+		boardDAO.insert(board);  
+		sqlSession.commit();
+		mybatisConfig.release(sqlSession);
+	}
+
+	public String getViewName() {
+		return "/board/view/regist";
+	}
+
+	//글등록 후에는 재접속해야 함 그래야 갱신된 목록을 보게됨
+	//안하면? regist.do가 남아있기 때문에 새로고침만으로도 글등록이 되어버림
+	public boolean ifForWard() {
+		return false;
+	}
+
+}

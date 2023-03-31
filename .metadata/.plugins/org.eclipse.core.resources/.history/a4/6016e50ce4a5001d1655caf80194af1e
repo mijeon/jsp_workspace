@@ -1,0 +1,19 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+
+//3, 4단계 수행
+public class RegistController implements Controller{
+
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+
+	public String getViewName() {
+		return "/board/view/regist";
+	}
+
+}

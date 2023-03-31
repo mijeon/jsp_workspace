@@ -1,0 +1,27 @@
+package com.jspshop.repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.jspshop.domain.Product;
+import com.jspshop.exception.ProductException;
+
+public class ProductDAO {
+	private SqlSession sqlSession;
+	
+	//일반 메서드  생성자에서 하는거랑 차이가 무어야
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	//등록
+	//throw는 예외를 처리하는게 아니라 회피하는 것임 즉 전가시키는 것임
+	public int insert(Product product) {
+		int result=0;
+		result=sqlSession.insert("Product.insert", product);
+		if(result<1) {
+			//에러를 일부러 일으킴 즉, 에러를 잡지 않고 전달이 목적임
+			throw new ProductException("상품이 등록되지 않았습니다.");
+		}	
+		return result;
+	}
+}

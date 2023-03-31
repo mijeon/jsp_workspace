@@ -1,0 +1,14 @@
+package gui.cook;
+
+public class Cook {
+	//요리사 객체는 팬 객체에 의존함
+	Pan pan;  //요리사가 팬을 가짐 (has a)
+	
+	public Cook() {
+		pan=new Fripan();
+	}
+	
+	public void cook(){
+		pan.heat();
+	}
+}

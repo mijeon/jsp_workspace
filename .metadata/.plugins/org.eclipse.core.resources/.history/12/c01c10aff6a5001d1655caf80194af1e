@@ -1,0 +1,26 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+
+//삭제요청을 처리하는 하위 컨트롤러
+public class DeleteController implements Controller{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+
+	@Override
+	public String getViewName() {
+		return null;
+	}
+
+	@Override
+	public boolean ifForWard() {
+		return false;
+	}
+
+}

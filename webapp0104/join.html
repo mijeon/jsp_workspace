@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=button]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function send(){
+            let count=0;  //버튼 누를 때 마다 초기화해야 하므로 지역변수로 선언
+
+            //유효성 체크 (데이터가 제대로 되었는지 체크하는 것)
+            if($("input[name='id']").val()==""){
+                alert("아이디를 입력해 주세요.");
+                $("input[name='id']").focus();
+                return;  //이 함수를 호출한 곳으로 실행부를 돌려보냄
+            } 
+            if($("input[name='pass']").val()==""){
+                alert("비밀번호를 입력해 주세요.");
+                $("input[name='pass']").focus();
+                return;
+            }
+            for(let i=0;i<$("input[name='hobby_name']").length;i++){
+                let ch=$("input[name='hobby_name']")[i];
+                if(ch.checked){
+                    count++;
+                }
+             }
+             if(count<1){
+                alert("취미가 한개정도 있어야 하지 않나요?");
+                return;
+             }
+             console.log("당신이 체크한 갯수는? "+count);
+
+
+            //$("form").attr("action", "/regist.jsp");
+            //$("form").attr("method", "post");
+            //json으로 한번에 입력받음
+            $("form").attr({
+                "action":"/regist.jsp",
+                "method":"post"
+            });
+            $("form").submit();
+        }
+        //jquery : js를 줄여쓰는 라이브러리 
+        //jquery 문법은 누구를 어떻게 구조로 되어있음 ex) $(누구를).함수(어떻게)
+        //누구를 자리에 작성할 수 있는 코드는 바로 css 선택자가 올 수 있음
+        $(document).ready(function(){
+            $("#bt").click(function(){
+                send();
+                alert("눌렀어?");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h3>Join Form</h3>
+
+    <div class="container">
+        <form>
+            <div>
+                <label for="fname">ID</label>
+                <input type="text" id="fname" name="id" placeholder="Your id..">
+            </div>
+            <div>
+                <label for="lname">Password</label>
+                <input type="text" id="lname" name="pass" placeholder="Your Password..">
+            </div>
+            <div>
+                <label for="country">취미</label>
+                영화<input type="checkbox" name="hobby_name" value="영화">
+                독서<input type="checkbox" name="hobby_name" value="독서">
+                운동<input type="checkbox" name="hobby_name" value="운동">
+                프로그래밍<input type="checkbox" name="hobby_name" value="프로그래밍">
+            </div>
+
+            <div>
+                <label for="subject">메일수신</label>
+                Yes<input type="radio" name="mail_receive" value="yes" checked="true">
+                No<input type="radio" name="mail_receive" value="no">
+            </div>
+            <input type="button" value="전송" id="bt">
+        </form>
+    </div>
+
+</body>
+
+</html>

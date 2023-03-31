@@ -1,0 +1,7 @@
+package com.jspshop.repository;
+
+public class ColorDAO {
+	insert public insert(Color) {
+		
+	}
+}

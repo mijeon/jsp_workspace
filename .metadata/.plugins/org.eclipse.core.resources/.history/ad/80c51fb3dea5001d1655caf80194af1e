@@ -1,0 +1,24 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.model.board.BoardDAO;
+import com.mvc3.mybatis.MybatisConfig;
+
+//목록요청을 처리하는 하위 컨트롤러
+//3, 4단계 수행
+public class ListController implements Controller{
+	MybatisConfig mybatisConfig=MybatisConfig.getInstance();
+	BoardDAO boardDAO=new BoardDAO();
+
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		//목록 가져오기
+		
+	}
+
+	public String getViewName() {
+		return null;
+	}
+}

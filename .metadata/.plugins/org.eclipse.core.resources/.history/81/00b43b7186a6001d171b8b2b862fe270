@@ -1,0 +1,18 @@
+package com.mvc3.model.emp;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.domain.Dept;
+
+public class DeptDAO {
+	private SqlSession sqlSession;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	public void insert(Dept dept) {
+		int result=0;
+		
+	}
+}

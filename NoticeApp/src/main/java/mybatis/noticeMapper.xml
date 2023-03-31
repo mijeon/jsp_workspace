@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReNotice">
+
+	<!-- 모두 가져오기 -->
+	<select id="selectAll" resultType="ReNotice">
+		select * from renotice order by renotice_idx desc
+	</select>
+	
+	<!-- 
+		${동적컬럼명에 사용 가능}
+		#{jdbc의 바인드 변수 대체(값만 들어가므로 컬럼명으로 사용할 수 없음)}
+	 -->
+	 
+	<!-- 한건 가져오기 -->
+	<!--  [<![CDATA[ =>xml에서 태그 대신 연산자로 인식함 -->
+	<select id="select" parameterType="int" resultType="ReNotice">
+		<![CDATA[   
+		select * from renotice where renotice_idx=#{renotice_idx}
+		]]>
+	</select>
+	
+	<!-- 한건 등록 -->
+	<insert id="insert" parameterType="ReNotice">
+		insert into renotice(renotice_idx, title, writer, content)
+		values(seq_renotice.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="update" parameterType="ReNotice">
+		update renotice set title=#{title}, writer=#{writer}, content=#{content}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+		delete renotice where renotice_idx=#{renotice_idx}
+	</delete>
+	
+</mapper>

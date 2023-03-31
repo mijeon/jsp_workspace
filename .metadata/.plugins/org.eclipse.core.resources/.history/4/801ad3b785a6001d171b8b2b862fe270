@@ -1,0 +1,28 @@
+package com.mvc3.controller.emp;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+
+//사원 신규 등록 요청을 처리하는 하위 컨트롤러 (부서 + 사원)
+public class RegistController implements Controller{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String dname=request.getParameter("dname");
+		String ename=request.getParameter("ename");
+		String sal=request.getParameter("sal");
+	}
+
+	@Override
+	public String getViewName() {
+		return null;
+	}
+
+	@Override
+	public boolean ifForWard() {
+		return false;
+	}
+	
+}

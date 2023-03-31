@@ -1,0 +1,9 @@
+package gui.cook;
+
+public class Cook {
+	Frypan pan;  //요리사가 팬을 가짐 (has a)
+	
+	public void cook(){
+		pan.heat();
+	}
+}

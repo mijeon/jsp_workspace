@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+ <!-- JQuey -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ 	function logCheck(){
+ 		//비동기로 전송
+ 		$.ajax({
+ 			url:"/admin/login/login.jsp",
+ 			type:"post",
+ 			data:$("#form1").serialize(),
+ 			success:function(result, status, xhr){
+ 			}
+ 		});
+ 	}
+ 	$(function(){
+ 		//등록 버튼에 이벤트 연결
+ 		$("#bt_login").click(function(){
+ 			logCheck();
+ 		});
+ 	});
+ </script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="form-group row">
+			<!-- 로딩바 begin -->
+			<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">Loading...</div></div>
+			<!-- 로딩바 end -->
+		</div>
+		<div class="card card-info m-5">
+			<div class="card-header">
+				<h3 class="card-title">Admin Login</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form class="form-horizontal" id="form1">
+				<div class="card-body">
+				<div class="form-group row">
+			<!-- 로딩바 begin -->
+			<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">Loading...</div></div>
+			<!-- 로딩바 end -->
+		</div>
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="admin_id"
+								placeholder="ID">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" name="admin_pass"
+								placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-2 col-sm-10">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck2"> <label class="form-check-label"
+									for="exampleCheck2">Remember me</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="button" id="bt_login" class="btn btn-info">Login</button>
+					<button type="button" class="btn btn-default float-right">Cancel</button>
+				</div>
+				<!-- /.card-footer -->
+			</form>
+		</div>
+	</div>
+</body>
+</html>

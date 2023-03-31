@@ -1,0 +1,2 @@
+/blood.do=com.mvc3.controller.BloodController
+/movie.do=com.mvc3.controller.MovieController

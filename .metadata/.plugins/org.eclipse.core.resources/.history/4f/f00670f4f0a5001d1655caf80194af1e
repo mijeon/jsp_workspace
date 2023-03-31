@@ -1,0 +1,8 @@
+package com.mvc3.controller.board;
+
+import com.mvc3.controller.Controller;
+
+//상세보기 요청을 처리하는 하위 컨트롤러
+public class DetailController implements Controller{
+
+}

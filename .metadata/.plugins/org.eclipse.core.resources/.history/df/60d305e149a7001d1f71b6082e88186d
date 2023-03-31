@@ -1,0 +1,7 @@
+package gui.cook;
+
+public class ElectPan {
+	public void heat() {
+		System.out.println("불로 요리해요");
+	}
+}

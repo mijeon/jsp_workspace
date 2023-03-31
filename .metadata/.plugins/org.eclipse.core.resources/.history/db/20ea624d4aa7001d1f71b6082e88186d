@@ -1,0 +1,6 @@
+package gui.cook;
+
+//전기이던 불이던 모든 팬의 최상위 객체
+public interface Pan {
+
+}

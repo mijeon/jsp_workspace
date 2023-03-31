@@ -1,0 +1,16 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+
+public class ListController implements Controller{
+
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	}
+
+	public String getViewName() {
+		return null;
+	}
+}

@@ -1,0 +1,17 @@
+package com.mvc3.model.board;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.domain.Board;
+
+public class BoardDAO {
+	private SqlSession sqlSession;  
+	
+	//주입받기 위한 setter 준비
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	public void insert(Board board) {
+	}
+}

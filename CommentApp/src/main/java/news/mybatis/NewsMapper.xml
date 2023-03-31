@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="News">
+	
+	<!-- 
+		1) mybatis의 자동매핑을 사용하기 힘든 경우 개발자가 직접 매핑을 명시할 수 있음 이때 사용되는 태그가 바로 resultMap임 
+		2) mybatis의 조인 지원
+	-->
+	<resultMap id="newsMap" type="News">
+		<id column="news_idx" property="news_idx"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="content" property="content"/>
+		<result column="regdate" property="regdate"/>
+		<result column="hit" property="hit"/>
+		<collection  column="news_idx" property="commentsList" javaType="java.util.List" ofType="Comments" select="Comments.selectAllByFkey"/>
+	</resultMap>
+	
+	<!-- 글 한건 등록 -->
+	<insert id="insert" parameterType="News">
+		insert into news(news_idx, title, writer, content)
+		values(seq_news.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- 비어있는 dto에 채워줌 arrayList 반환 -->
+	<select id="selectAll" resultType="News">
+		select * from news order by news_idx desc
+	</select>
+	
+	<!-- 한건 가져오기 -->
+	<select id="select" resultMap="newsMap" parameterType="int">
+		select * from news where news_idx=#{news_idx}
+	</select>
+	
+	<update id="update" parameterType="News">
+		update news set title=#{title}, writer=#{writer}, content=#{content}
+		where news_idx=#{news_idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete news where news_idx=#{news_idx}
+	</delete>
+</mapper>

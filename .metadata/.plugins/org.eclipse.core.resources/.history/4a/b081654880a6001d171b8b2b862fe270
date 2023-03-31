@@ -1,0 +1,5 @@
+package com.mvc3.domain;
+
+public class Dept {
+
+}

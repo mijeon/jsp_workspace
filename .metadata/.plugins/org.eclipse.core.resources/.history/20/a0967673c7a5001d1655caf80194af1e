@@ -1,0 +1,60 @@
+package com.mvc3.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+	모든 요청을 받는 1차 진입점이 되어야 하므로, mvc에서의 컨트롤로써의 역활을 서블릿이 담당하면 됨
+	1) 요청 받음 (메인 컨트롤러)
+	2) 요청 분석 (메인 컨트롤러)
+	3) 로직객체에게 일 시킴 (서브 컨트롤러)
+	4) 결과가 존재한다면 결과 저장 (서브 컨트롤러) -> 어디에 (application, session, request)
+	5) 알맞는 결과 페이지를 보여줌 (메인 컨트롤러)
+*/
+public class DispatcherServlet2 extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doRequest(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doRequest(request, response);
+	}
+	
+	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1단계) 요청 받음
+		System.out.println("나 호출됨");
+		
+		//파라미터 인코딩 처리
+		request.setCharacterEncoding("utf-8");
+		
+		//2단계) 요청 분석
+		String uri=request.getRequestURI();
+		System.out.println("당신의 요청 uri는 "+uri);
+		
+		if(uri.equals("/blood.do")) {
+			System.out.println("혈액형 담당 컨트롤러에게 전달할 예정");
+			BloodController controller=new BloodController();
+			controller.execute(request, response);  //전달
+			
+			//5단계) 결과가 있을 경우 포워딩, 결과가 없을 경우 redirect(재접속)
+			RequestDispatcher dis=request.getRequestDispatcher("/blood/result.jsp");  //포워딩 하고 싶은 주소 
+			dis.forward(request, response);  //전달
+			
+		}else if(uri.equals("/movie.do")) {
+			System.out.println("영화 담당 컨트롤러에게 전달할 예정");
+			MovieController controller=new MovieController();
+			controller.handle(request, response);
+			
+			//5단계) 결과가 있을 경우 포워딩, 결과가 없을 경우 redirect(재접속)
+			RequestDispatcher dis=request.getRequestDispatcher("/movie/result.jsp");  //포워딩 하고 싶은 주소 
+			dis.forward(request, response);  //전달
+		}
+	}
+}

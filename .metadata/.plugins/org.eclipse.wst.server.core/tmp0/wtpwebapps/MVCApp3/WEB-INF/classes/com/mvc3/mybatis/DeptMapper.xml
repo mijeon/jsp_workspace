@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dept">
+	
+	<!-- 트랜잭션 할것이므로 insert만 함 -->
+	<insert id="insert" parameterType="Dept">
+		insert into dept(dname) values(#{dname})
+		
+		<!-- 위 insert문에 의해 생성된 pk를 가져오기 -->
+		<selectKey 
+		keyColumn="deptno" 
+		keyProperty="deptno" 
+		order="AFTER" 
+		resultType="int">
+			select last_insert_id() as deptno
+		</selectKey>
+	</insert>
+	
+	<!-- 한건 가져오기 -->
+	<select id="selectByEmp" parameterType="int" resultType="Dept">
+		select * from dept where deptno=#{deptno}
+	</select>
+	
+	<!-- 부서 하나 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from dept where deptno=#{deptno}
+	</delete>
+	
+</mapper>

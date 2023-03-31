@@ -1,0 +1,30 @@
+package com.mvc3.controller.board;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.model.board.BoardDAO;
+import com.mvc3.mybatis.MybatisConfig;
+
+//상세보기 요청을 처리하는 하위 컨트롤러
+public class DetailController implements Controller{
+	MybatisConfig mybatisConfig=new MybatisConfig();
+	BoardDAO boardDAO=new BoardDAO();
+	
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+
+	@Override
+	public String getViewName() {
+		return null;
+	}
+
+	@Override
+	public boolean ifForWard() {
+		return true;
+	}
+
+}

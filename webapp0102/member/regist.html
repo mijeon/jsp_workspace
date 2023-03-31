@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 500px;
+            border: 2px solid gray;
+            border-radius: 5px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        //등록 요청
+        function regist(){
+            //자바스트립트는 html과 함께 실행되므로 소스를 보안상 숨길 수 없음
+            //즉 클라이언트의 웹브라우저상에서 실행되기 때문임 따라서 오라클, mysql과 같은
+            //db 접속 문자열을 js에 작성할 경우, 보안이 불가능함
+            //해결책 ? 직접 db연동을 못하므로 간접적으로 jsp에 요청하면 됨 따라서 아래의 작성폼을 
+            //다 작성하고 나서, 톰켓서버에 작성품 요소값들을 전송하자
+           //html form 태그를 이용해 데이터 전송하기
+           let form1=document.getElementById("form1");
+           form1.action="/member/insert.jsp";  //서버주소
+           form1.submit();  //서버에 전송을 일으킴
+        }
+
+        //문서가 로드되면
+        window.addEventListener("load", function(){
+            let bt=document.getElementById("bt");
+
+            bt.addEventListener("click", function(){
+                regist();
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- form 태그는 양식 요소들을 대상으로 어디까지 전송할 지 그 범위를 설정함 -->
+    <form id="form1" method="post">
+        <div id="wrapper">
+            <div>
+                <label for="m_id">ID</label>
+                <input type="text" name="id" id="m_id" >  <!--name : 서버로 데이터를 보내주는 역활을 함 즉, 변수명-->
+            </div>
+            <div>
+                <label for="m_pass">PASS</label>
+                <input type="password" name="pass" id="m_pass">
+            </div>
+            <div>
+                <label for="m_name">NAME</label>
+                <input type="text"  name="name" id="name">
+            </div>
+            <div>
+                <button id="bt">등록</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

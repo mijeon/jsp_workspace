@@ -1,0 +1,22 @@
+<%@page import="com.jspshop.domain.Admin"%>
+<%@page import="com.jspshop.repository.AdminDAO"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%!
+	AdminDAO adminDAO=new AdminDAO();
+%>
+<%
+	//로그인 폼으로 부터 전송된 파라미터 받기
+	String admin_id=request.getParameter("admin_id");
+	String admin_pass=request.getParameter("admin_pass");
+	
+	System.out.println(admin_id);
+	System.out.println(admin_pass);
+	
+	//dto 담기
+	Admin admin=new Admin();  //empty dto
+	admin.setAdmin_id(admin_id);
+	admin.setAdmin_pass(admin_pass);
+	
+	adminDAO.select(admin);
+	
+%>

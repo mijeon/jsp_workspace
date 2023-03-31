@@ -1,0 +1,27 @@
+package com.jspshop.repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.jspshop.domain.Product;
+import com.jspshop.exception.ProductException;
+import com.mysql.jdbc.PacketTooBigException;
+
+public class ProductDAO {
+	private SqlSession sqlSession;
+	
+	//일반 메서드  생성자에서 하는거랑 차이가 무어야
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	//등록
+	public int insert(Product product) {
+		int result=0;
+		result=sqlSession.insert("Product.insert", product);
+		if(result<1) {
+			//에러를 일부러 일으킴 
+			throw new ProductException("상품이 등록되지 않았습니다.");
+		}	
+		return result;
+	}
+}

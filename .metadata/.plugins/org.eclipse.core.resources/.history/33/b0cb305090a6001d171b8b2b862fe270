@@ -1,0 +1,48 @@
+package com.mvc3.model.emp;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.domain.Emp;
+import com.mvc3.exception.DeptException;
+import com.mvc3.exception.EmpException;
+import com.mvc3.mybatis.MybatisConfig;
+
+/*
+ 	이 객체는 모델 파트에서의 서비스 역활을 수행함 -> '부장' 역활
+ 	만일 서비스의 존재가 없을 경우, 컨트롤러가 너무 세부적인 Model 영역의 업무를 수행하게 됨
+ 	또한 트랜잭션 상황에서 각각의 DAO들의 업무 수행이 성공했는지 여부를 판단하여 트랜잭션을 
+ 	commit 할지 rollback 을 결정짓는 역활을 수행함
+ 	주의) 직접 일하지 않고 각종 모델 영역의 객체들에게 일을 시킴
+ */
+public class EmpService {
+	MybatisConfig mybatisConfig=MybatisConfig.getInstance();
+	DeptDAO deptDAO;  //사원
+	EmpDAO empDAO;  //사원
+	
+	public EmpService() {
+		deptDAO=new DeptDAO();
+		empDAO=new EmpDAO();
+	}
+	
+	//사원등록
+	public void regist(Emp emp) {
+		try {
+			//세션 얻어와서 배분하기 (주입)
+			SqlSession sqlSession=mybatisConfig.getSqlSession();
+			deptDAO.setSqlSession(sqlSession);
+			empDAO.setSqlSession(sqlSession);
+			
+			deptDAO.insert(emp.getDept());  //부서등록
+			empDAO.insert(emp);  //사원등록
+			sqlSession.commit();
+		} catch (DeptException e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}catch (EmpException e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}finally {
+			mybatisConfig.release(sqlSession);
+		}
+	}
+}

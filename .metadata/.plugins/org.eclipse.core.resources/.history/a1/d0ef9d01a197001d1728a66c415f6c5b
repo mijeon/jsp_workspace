@@ -1,0 +1,22 @@
+package com.jspshop.repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.jspshop.domain.Product;
+
+public class ProductDAO {
+	private SqlSession sqlSession;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	//등록
+	public int insert(Product product) {
+		int result=0;
+		sqlSession.insert(null);
+		return result;
+	}
+	
+	
+}

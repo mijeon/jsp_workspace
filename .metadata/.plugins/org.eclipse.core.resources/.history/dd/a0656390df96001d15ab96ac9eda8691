@@ -1,0 +1,14 @@
+package com.jspshop.repository;
+
+import com.jspshop.domain.Admin;
+import com.jspshop.mybatis.MybatisConfig;
+
+public class AdminDAO {
+	MybatisConfig config=MybatisConfig.getInstance();
+	
+	//관리자 한명 조회하기(id, pass 일치할 경우)
+	public Admin select(Admin admin) {
+		
+		return null;
+	}
+}

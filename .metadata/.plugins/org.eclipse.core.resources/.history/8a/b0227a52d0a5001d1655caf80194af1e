@@ -1,0 +1,12 @@
+package com.mvc3.model.board;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.mvc3.domain.Board;
+
+public class BoardDAO {
+	SqlSession sqlSession;
+	
+	public void insert(Board board) {
+	}
+}

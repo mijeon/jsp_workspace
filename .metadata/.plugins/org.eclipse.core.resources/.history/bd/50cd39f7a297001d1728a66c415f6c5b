@@ -1,0 +1,9 @@
+package com.jspshop.exception;
+
+public class ColorException2 extends RuntimeException{
+	
+	//개발자가 전달하고픈 에러 메세지
+	public ColorException2(String msg) {
+		super(msg);
+	}
+}

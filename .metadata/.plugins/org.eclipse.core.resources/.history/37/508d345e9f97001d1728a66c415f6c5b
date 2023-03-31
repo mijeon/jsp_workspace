@@ -1,0 +1,10 @@
+package com.jspshop.repository;
+
+import com.jspshop.domain.Psize;
+
+public class PsizeDAO {
+	public int insert(Psize psize) {
+		int result=0;
+		return result;
+	}
+}

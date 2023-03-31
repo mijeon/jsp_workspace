@@ -1,0 +1,20 @@
+package com.jspshop.repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.jspshop.domain.Psize;
+
+public class PsizeDAO {
+	private SqlSession sqlSession;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	//등록
+	public int insert(Psize psize) {
+		int result=0;
+		sqlSession.insert("Psize.insert", psize);
+		return result;
+	}
+}

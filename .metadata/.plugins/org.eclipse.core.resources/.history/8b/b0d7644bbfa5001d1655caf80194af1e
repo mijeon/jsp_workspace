@@ -1,0 +1,6 @@
+#이 파일 형식이 xml 문서일 경우, xml 파서 이용
+#이 파일 형식이 json 문서일 경우, json 파서 이용
+#이 파일 형식이 key-value의 쌍인 map으로 되어 있으므로, Properties 객체 이용
+
+/blood.do=com.mvc3.controller.BloodController
+/movie.do=com.mvc3.controller.MovieController

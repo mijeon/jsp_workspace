@@ -1,0 +1,8 @@
+package com.mvc3.controller.emp;
+
+import com.mvc3.controller.Controller;
+
+//사원 신규 등록 요청을 처리하는 하위 컨트롤러 (부서 + 사원)
+public class RegistController implements Controller{
+	
+}

@@ -1,0 +1,38 @@
+package com.mvc3.controller.emp;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mvc3.controller.Controller;
+import com.mvc3.model.emp.EmpService;
+
+//사원 목록 요청을 처리하는 하위 컨트롤러
+public class ListController implements Controller{
+	EmpService empService=new EmpService();
+	
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("목록요청을 처리할 예정");
+		
+		//3단계) 일시키기
+		List empList=empService.selectAll();
+		//empList가 jsp까지 살아있어야 하므로, application, session, request 중 원하는 객체에 보관해 놓을 수 있음
+		//특히 request에 넣게되면 요청에 대한 응답을 하지 않아야 함 서버 상에 존재하는 결과 jsp로 곧바로 포워딩해야 함
+		
+		//4단계) 결과 저장
+		request.setAttribute("empList", empList);
+	}
+
+	@Override
+	public String getViewName() {
+		return null;
+	}
+
+	@Override
+	public boolean ifForWard() {
+		return true;
+	}
+
+}

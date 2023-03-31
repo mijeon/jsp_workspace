@@ -1,0 +1,6 @@
+package com.mvc3.controller.emp;
+
+//삭제 요청을 처리하는 하위 컨트롤러
+public class DeleteController {
+
+}

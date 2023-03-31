@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ResponseMessage.java&apos; to &apos;JspShop/src/main/java/com.jspshop.util&apos;&#x0D;&#x0A;- Original project: &apos;CommentApp&apos;&#x0D;&#x0A;- Destination element: &apos;JspShop/src/main/java/com.jspshop.util&apos;&#x0D;&#x0A;- Original element: &apos;news.util.ResponseMessage.java&apos;" description="Copy compilation unit" destination="=JspShop/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.jspshop.util" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;news.util{ResponseMessage.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1674797980317" units="1" version="1.0"/>
+</session>

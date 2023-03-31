@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dept">
+	
+	<!--
+		 resultMap을 사용해야 하는 경우 (수동매핑)
+		 1) 컬럼과 자바객체의 맴버변수가 일치하지 않는 경우
+		 2) collection과 assocation 같은 조인을 처리할 경우
+	 -->
+	<resultMap 	id="DeptMap" 		type="Dept">
+		<id 			column="deptno" 	property="deptno"/>
+		<result 		column="dname" 	property="dname"/>
+		<result 		column="loc" 			property="loc"/>
+		
+		<!--  
+		<collection column="deptno" 
+			javaType="java.util.List" 
+			ofType="Emp" 
+			property="empList" 
+			select="Emp.selectByFkey"/>
+			-->
+	</resultMap>
+	
+	<!-- 공통 코드조각 -->
+	<sql id="common">
+		select deptno, dname, loc
+	</sql>
+	
+	<!-- 부서 목록 모두 가져오기 -->
+	<select id="selectAll" resultMap="DeptMap">
+		<include refid="common"/>
+		from dept
+	</select>
+	
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Renotice">
+	
+	<!-- 등록하기 -->
+	<insert id="insert" parameterType="Renotice">
+		insert into renotice(renotice_idx, title, writer, content)
+		values(seq_renotice.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- 목록 전체 가져오기 -->
+	<select id="selectAll" resultType="Renotice">
+		select * from Renotice
+	</select>
+</mapper>

@@ -1,0 +1,8 @@
+package gui.cook;
+
+public class Frypan {
+	
+	public void heat() {
+		System.out.println("불로 지져요");
+	}
+}

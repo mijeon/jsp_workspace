@@ -1,0 +1,11 @@
+package com.jspshop.repository;
+
+import com.jspshop.domain.Color;
+
+public class ColorDAO {
+	public int insert(Color color) {
+		int result =0;
+		
+		return result;
+	}
+}
